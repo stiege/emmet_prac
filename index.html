@@ -1,0 +1,26 @@
+<html ng-app="phonecatApp">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="phone-list.component.js"></script>
+</head>
+<body>
+
+  <!-- Use a custom component to render a list of phones -->
+  <phone-list></phone-list>
+
+<div ng-app="phonecatApp" ng-controller="myCtrl"> 
+<p>Today's welcome message is:</p>
+<h1>{{myWelcome}}</h1>
+</div>
+<script>
+    var app = angular.module('phonecatApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        $http.get("welcome.html")
+        .then(function(response) {
+            $scope.myWelcome = response.data;
+        });
+    });
+</script>
+</body>
+</html>
